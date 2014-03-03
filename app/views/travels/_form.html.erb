@@ -1,0 +1,77 @@
+<%= form_for(@travel) do |f| %>
+  <% if @travel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
+
+      <ul>
+      <% @travel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :destination %><br>
+    <%= f.text_field :destination %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :players_count %><br>
+    <%= f.number_field :players_count %>
+  </div>
+  <div class="field">
+    <%= f.label :cars_count %><br>
+    <%= f.number_field :cars_count %>
+  </div>
+  <div class="field">
+    <%= f.label :travel_costs %> (eur)<br>
+    <%= f.number_field :travel_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :travel_distance %> (km)<br>
+    <%= f.number_field :travel_distance %>
+  </div>
+  <div class="field">
+    <%= f.label :travel_date %><br>
+    <%= f.date_select :travel_date %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :players %><br>
+    <%= f.select :players, @players.map {|p| [ p.name+" "+p.surname, p.id ] },
+                                           { :prompt => "Please select players" },
+                                           { :multiple => true, :size => 5 } %>
+  </div>
+
+   <%= f.fields_for :travel_tickets do |p| %>
+     <div class="field">
+       <%= p.label :ticket_name %><br>
+       <%= p.text_field :ticket_name, name: 'travel_tickets[ticket_name]' %>
+     </div>
+     <div class="field">
+       <%= p.label :ticket_player %><br>
+       <%= p.number_field :ticket_player, name: 'travel_tickets[ticket_player]' %>
+     </div>
+     <div class="field">
+       <%= p.label :ticket_img %><br>
+       <%= p.file_field :ticket_img, :multiple => true, name: 'travel_tickets[ticket_img][]' %>
+     </div>
+   <% end %>
+
+
+   <% if params[:controller] == "travel" && params[:action] == "edit" %>
+     <% @travel.travel_tickets.each do |p| %>
+       <%= image_tag p.ticket_img, :size => "150x150" %>
+     <% end %>
+   <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

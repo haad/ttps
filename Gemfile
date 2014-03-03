@@ -19,6 +19,10 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
+# Picture upload
+gem 'carrierwave'
+
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -31,6 +35,7 @@ group :development do
   gem 'pry'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3-ruby'
+  gem 'shotgun'
 end
 
 group :test do

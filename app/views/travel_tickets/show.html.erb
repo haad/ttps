@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Travel Ticket Name:</strong>
+  <%= @travel_ticket.name %>
+</p>
+
+<p>
+  <strong>Travel Ticket:</strong>
+</p>
+  <%= image_tag(@travel_ticket.ticket_img_url, :width => 600) if @travel_ticket.ticket_img.present? %>
+
+<p>
+  <strong>Travel:</strong>
+  <%= @travel_ticket.travel_id %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @travel_ticket.player_id %>
+</p>
+
+<%= link_to 'Edit', edit_travel_ticket_path(@travel_ticket) %> |
+<%= link_to 'Back', travel_tickets_path %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @travel.destination %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @travel.description %>
+</p>
+
+<p>
+  <strong>Players count:</strong>
+  <%= @travel.players_count %>
+</p>
+
+<p>
+  <strong>Travel costs:</strong>
+  <%= @travel.travel_costs %>
+</p>
+
+<p>
+  <strong>Travel distance:</strong>
+  <%= @travel.travel_distance %>
+</p>
+
+<p>
+  <strong>Travel date:</strong>
+  <%= @travel.travel_date %>
+</p>
+
+<p>
+  <strong>Travel Tickets:</strong>
+</p>
+
+<% @travel_tickets.each do |p| %>
+  <%= image_tag p.ticket_img_url, :size => "300x300" %>
+  <%= link_to "Destroy", p, method: :delete %>
+<% end %>
+
+<p>
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>
+</p>

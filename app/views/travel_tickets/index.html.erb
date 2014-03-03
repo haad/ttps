@@ -1,0 +1,31 @@
+<h1>Listing travel_tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ticket img</th>
+      <th>Travel</th>
+      <th>Player</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @travel_tickets.each do |travel_ticket| %>
+      <tr>
+        <td><%= travel_ticket.ticket_img %></td>
+        <td><%= travel_ticket.travel_id %></td>
+        <td><%= travel_ticket.player_id %></td>
+        <td><%= link_to 'Show', travel_ticket %></td>
+        <td><%= link_to 'Edit', edit_travel_ticket_path(travel_ticket) %></td>
+        <td><%= link_to 'Destroy', travel_ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Travel ticket', new_travel_ticket_path %>
