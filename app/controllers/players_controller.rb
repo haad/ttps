@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_filter :require_login
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players

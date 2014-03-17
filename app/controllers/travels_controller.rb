@@ -1,4 +1,5 @@
 class TravelsController < ApplicationController
+  before_filter :require_login
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
 
   # GET /travels
