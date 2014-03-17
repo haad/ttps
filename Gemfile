@@ -22,7 +22,6 @@ gem 'twitter-bootstrap-rails'
 # Picture upload
 gem 'carrierwave'
 
-
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 

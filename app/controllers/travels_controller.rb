@@ -22,12 +22,12 @@ class TravelsController < ApplicationController
   # GET /travels/1/edit
   def edit
   end
-    require 'pry'
+    #require 'pry'
 
   # POST /travels
   def create
     @travel = Travel.new(travel_params)
-    binding.pry
+    #binding.pry
     if @travel.save
       unless params["travel_tickets"]["ticket_img"].nil?
         params["travel_tickets"]["ticket_img"].each do |a|
