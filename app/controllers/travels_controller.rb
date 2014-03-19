@@ -22,6 +22,7 @@ class TravelsController < ApplicationController
 
   # GET /travels/1/edit
   def edit
+      @players = Player.all.to_a
   end
     #require 'pry'
 
