@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  destination: MyString
+  destination: Budapest
   description: MyText
-  players_count: 1
   travel_costs: 1
   travel_distance: 1
   travel_date: 2014-02-24
 
 two:
-  destination: MyString
+  destination: Praha1
   description: MyText
-  players_count: 1
   travel_costs: 1
   travel_distance: 1
   travel_date: 2014-02-24

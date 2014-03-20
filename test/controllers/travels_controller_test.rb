@@ -2,7 +2,10 @@ require 'test_helper'
 
 class TravelsControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
     @travel = travels(:one)
+    @players = players(:one)
+    login_user
   end
 
   test "should get index" do
@@ -12,13 +15,13 @@ class TravelsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, players: { surname: "testsur", name: "testname", id: 1 }
     assert_response :success
   end
 
   test "should create travel" do
     assert_difference('Travel.count') do
-      post :create, travel: { description: @travel.description, destination: @travel.destination, players_count: @travel.players_count, travel_costs: @travel.travel_costs, travel_date: @travel.travel_date, travel_distance: @travel.travel_distance }
+      post :create, travel: { description: @travel.description, destination: @travel.destination, travel_costs: @travel.travel_costs, travel_date: @travel.travel_date, travel_distance: @travel.travel_distance }
     end
 
     assert_redirected_to travel_path(assigns(:travel))
@@ -35,7 +38,7 @@ class TravelsControllerTest < ActionController::TestCase
   end
 
   test "should update travel" do
-    patch :update, id: @travel, travel: { description: @travel.description, destination: @travel.destination, players_count: @travel.players_count, travel_costs: @travel.travel_costs, travel_date: @travel.travel_date, travel_distance: @travel.travel_distance }
+    patch :update, id: @travel, travel: { description: @travel.description, destination: @travel.destination, travel_costs: @travel.travel_costs, travel_date: @travel.travel_date, travel_distance: @travel.travel_distance }
     assert_redirected_to travel_path(assigns(:travel))
   end
 

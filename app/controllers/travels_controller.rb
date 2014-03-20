@@ -9,7 +9,9 @@ class TravelsController < ApplicationController
 
   # GET /travels/1
   def show
-    @travel_tickets=@travel.travel_tickets.all
+#    require 'pry'
+#    binding.pry
+    @travel_tickets=@travel.travel_tickets.to_a
   end
 
   # GET /travels/new
@@ -24,14 +26,12 @@ class TravelsController < ApplicationController
   def edit
       @players = Player.all.to_a
   end
-    #require 'pry'
 
   # POST /travels
   def create
     @travel = Travel.new(travel_params)
-    #binding.pry
     if @travel.save
-      unless params["travel_tickets"]["ticket_img"].nil?
+      unless params["travel_tickets"].nil? or params["travel_tickets"]["ticket_img"].nil?
         params["travel_tickets"]["ticket_img"].each do |a|
           @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel_tickets]['ticket_name'][0].to_s, :player_id => params[:travel_tickets]['ticket_player'][0].to_i)
         end
@@ -44,8 +44,7 @@ class TravelsController < ApplicationController
   # PATCH/PUT /travels/1
   def update
     if @travel.update(travel_params)
-      #binding.pry
-      unless params["travel_tickets"]["ticket_img"].nil?
+      unless params["travel_tickets"].nil? or params["travel_tickets"] ["ticket_img"].nil?
         params["travel_tickets"]["ticket_img"].each do |a|
           @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel_tickets]['ticket_name'][0].to_s, :player_id => params[:travel_tickets]['ticket_player'][0].to_i)
         end
@@ -70,7 +69,7 @@ class TravelsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def travel_params
-      params.require(:travel).permit(:destination, :description, :players_count, :cars_count, :travel_costs,
+      params.require(:travel).permit(:destination, :description, :cars_count, :travel_costs,
                                      :travel_distance, :travel_date,
                                      travel_ticket_attributes: [:ticket_img, :travel_id, :ticket_name, :ticket_player])
     end
