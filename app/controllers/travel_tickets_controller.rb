@@ -14,16 +14,19 @@ class TravelTicketsController < ApplicationController
   # GET /travel_tickets/new
   def new
     @travel_ticket = TravelTicket.new
+    @players = Player.all.to_a
+    @travels = Travel.all.to_a
   end
 
   # GET /travel_tickets/1/edit
   def edit
+    @players = Player.all.to_a
+    @travels = Travel.all.to_a
   end
 
   # POST /travel_tickets
   def create
     @travel_ticket = TravelTicket.new(travel_ticket_params)
-
     if @travel_ticket.save
       redirect_to @travel_ticket, notice: 'Travel ticket was successfully created.'
     else
@@ -33,6 +36,9 @@ class TravelTicketsController < ApplicationController
 
   # PATCH/PUT /travel_tickets/1
   def update
+    @travels = Travel.all.to_a
+    @players = Player.all.to_a
+
     if @travel_ticket.update(travel_ticket_params)
       redirect_to @travel_ticket, notice: 'Travel ticket was successfully updated.'
     else
@@ -54,6 +60,6 @@ class TravelTicketsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def travel_ticket_params
-      params.require(:travel_ticket).permit(:name, :ticket_img, :travel_id, :ticket_driver, :player_id)
+      params.require(:travel_ticket).permit(:name, :ticket_img, :travel_id, :player_id, :ticket_sum)
     end
 end

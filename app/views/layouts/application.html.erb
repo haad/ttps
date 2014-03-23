@@ -11,6 +11,7 @@
   <div id="nav">
     <% if current_user %>
       <%= link_to "Travels", :travels %> |
+      <%= link_to "Travel Tickets", :travel_tickets %> |
       <%= link_to "Players", :players %> |
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
       <%= link_to "Logout", :logout, method: :post %>

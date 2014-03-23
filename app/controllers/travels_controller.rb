@@ -31,10 +31,13 @@ class TravelsController < ApplicationController
   def create
     @travel = Travel.new(travel_params)
     if @travel.save
-      unless params[:travel][:travel_tickets].nil? or params["travel_tickets"][:ticket_img].nil?
-        params[:travel][:travel_tickets][:ticket_img].each do |a|
-          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel][:travel_tickets][:name], :player_id => params[:travel][:travel_tickets][:player_id])
-        end
+      unless params[:travel][:travel_tickets].nil? or params[:travel][:travel_tickets][:ticket_img].nil?
+          @travel_ticket = @travel.travel_tickets.create!(
+            :ticket_img => params[:travel][:travel_tickets][:ticket_img],
+            :travel_id => @travel.id,
+            :name => params[:travel][:travel_tickets][:name],
+            :player_id => params[:travel][:travel_tickets][:player_id],
+            :ticket_sum => params[:travel][:travel_tickets][:ticket_sum])
       end
       redirect_to @travel, notice: 'Travel was successfully created.'
     else
@@ -45,9 +48,11 @@ class TravelsController < ApplicationController
   def update
     if @travel.update(travel_params)
       unless params[:travel][:travel_tickets].nil? or params[:travel][:travel_tickets][:ticket_img].nil?
-        params[:travel][:travel_tickets][:ticket_img].each do |a|
-          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel][:travel_tickets][:name], :player_id => params[:travel][:travel_tickets][:player_id])
-        end
+          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => params[:travel][:travel_tickets][:ticket_img],
+            :travel_id => @travel.id,
+            :name => params[:travel][:travel_tickets][:name],
+            :player_id => params[:travel][:travel_tickets][:player_id],
+            :ticket_sum => params[:travel][:travel_tickets][:ticket_sum])
       end
 
       unless params[:travel]["players"].nil?
@@ -78,6 +83,6 @@ class TravelsController < ApplicationController
     def travel_params
       params.require(:travel).permit(:destination, :description, :cars_count, :travel_costs,
                                      :travel_distance, :travel_date,
-                                     :travel_ticket_attributes => [:ticket_img, :player_id, :name])
+                                     :travel_ticket_attributes => [:ticket_img, :player_id, :name, :ticket_sum])
     end
 end

@@ -3,11 +3,13 @@
 one:
   name: TravelTicket1
   ticket_img: <%= Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")) %>
-  travel_id: 1
-  player_id: 1
+  ticket_sum: 9
+  travel: one
+  player: one
 
 two:
   name: TravelTicket2
   ticket_img: <%= Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")) %>
-  travel_id: 1
-  player_id: 1
+  ticket_sum: 10
+  travel: one
+  player: one

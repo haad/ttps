@@ -43,30 +43,6 @@
                                            { :multiple => true, :size => 5, include_blank: 'None' } %>
   </div>
 
-   <%= f.fields_for :travel_tickets do |p| %>
-     <div class="field">
-       <%= p.label :ticket_name %><br>
-       <%= p.text_field :name %>
-     </div>
-     <div class="field">
-       <%= p.label :ticket_player %><br>
-       <%= p.select :player_id, @players.map {|player| [ player.name+" "+player.surname, player.id ] },
-                                             { :prompt => "Please select player" },
-                                             { :multiple => false, :size => 1 } %>
-     </div>
-     <div class="field">
-       <%= p.label :ticket_img %><br>
-       <%= p.file_field :ticket_img, :multiple => true %>
-     </div>
-   <% end %>
-
-   <% if params[:controller] == "travel" && params[:action] == "edit" %>
-     <% @travel.travel_tickets.each do |p| %>
-       <%= image_tag p.ticket_img, :size => "150x150" %>
-     <% end %>
-   <% end %>
-
-
   <div class="actions">
     <%= f.submit %>
   </div>

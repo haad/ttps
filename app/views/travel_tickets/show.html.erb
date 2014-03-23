@@ -7,19 +7,25 @@
 </p>
 
 <p>
-  <strong>Travel Ticket:</strong>
-</p>
-  <%= image_tag(@travel_ticket.ticket_img_url, :width => 600) if @travel_ticket.ticket_img.present? %>
-
-<p>
   <strong>Travel:</strong>
-  <%= @travel_ticket.travel_id %>
+  <%= @travel_ticket.travel.destination %>
 </p>
 
 <p>
   <strong>Player:</strong>
-  <%= @travel_ticket.player_id %>
+  <%= "#{@travel_ticket.player.name} #{@travel_ticket.player.surname} " %>
 </p>
 
+<p>
+  <strong>Ticket Sum:</strong>
+  <%= @travel_ticket.ticket_sum %>
+</p>
+
+<p>
+  <strong>Travel Ticket Image:</strong>
+</p>
+<%= image_tag(@travel_ticket.ticket_img_url, :width => 150) if @travel_ticket.ticket_img.present? %>
+
+<br />
 <%= link_to 'Edit', edit_travel_ticket_path(@travel_ticket) %> |
 <%= link_to 'Back', travel_tickets_path %>

@@ -34,11 +34,16 @@
   <strong>Travel Tickets:</strong>
 </p>
 
-<% @travel_tickets.each do |p| %>
-  <%= image_tag p.ticket_img_url, :size => "300x300" %>
-  <%= link_to "Destroy", p, method: :delete %>
+<% if @travel_tickets.empty? %>
+  <strong><%= link_to "Add new Travel Tickets", controller: "travel_tickets", action: "new" %></strong>
+<% else %>
+  <% @travel_tickets.each do |p| %>
+    <%= image_tag p.ticket_img_url, :size => "300x300" %>
+    <%= link_to "Add", controller: "travel_tickets", action: "new" %>
+    <%= link_to "Edit", controller: "travel_tickets", action: "edit", id: p %>
+    <%= link_to "Destroy", p, method: :delete %>
+  <% end %>
 <% end %>
-
 <p>
 <%= link_to 'Edit', edit_travel_path(@travel) %> |
 <%= link_to 'Back', travels_path %>

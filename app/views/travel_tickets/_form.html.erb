@@ -16,18 +16,30 @@
     <%= f.file_field :ticket_img %>
   </div>
   <div class="field">
+    <%= f.label :ticket_sum %><br>
+    <%= f.number_field :ticket_sum %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :travel_id %><br>
-    <%= f.number_field :travel_id %>
+    <%= f.label :ticket_travel %><br>
+    <%= f.select :travel_id, @travels.map {|travel| [ travel.destination+" "+travel.travel_date.inspect, travel.id ] },
+                                          { :prompt => "Please select travel" },
+                                          { :multiple => false, :size => 1 } %>
   </div>
   <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.number_field :player_id %>
+    <%= f.label :ticket_player %><br>
+    <%= f.select :player_id, @players.map {|player| [ player.name+" "+player.surname, player.id ] },
+                                          { :prompt => "Please select player" },
+                                          { :multiple => false, :size => 1 } %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <% if params[:controller] == "travel_tickets" && params[:action] == "edit" %>
+       <%= image_tag @travel_ticket.ticket_img, :size => "150x150" %>
+  <% end %>
 <% end %>

@@ -1,11 +1,13 @@
-<h1>Listing travel_tickets</h1>
+<h1>Listing Travel Tickets</h1>
 
-<table>
+<table border="0" cellpadding="10" cellspacing="2" style="margin:1px">
   <thead>
     <tr>
       <th>Ticket img</th>
       <th>Travel</th>
+      <th>Travel Date</th>
       <th>Player</th>
+      <th>Ticket Sum</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,9 +17,11 @@
   <tbody>
     <% @travel_tickets.each do |travel_ticket| %>
       <tr>
-        <td><%= travel_ticket.ticket_img %></td>
-        <td><%= travel_ticket.travel_id %></td>
-        <td><%= travel_ticket.player_id %></td>
+        <td><%= travel_ticket.name %></td>
+        <td><%= travel_ticket.travel.destination %></td>
+        <td><%= travel_ticket.travel.travel_date.inspect %></td>
+        <td><%= "#{travel_ticket.player.name} #{travel_ticket.player.surname}" %></td>
+        <td><%= travel_ticket.ticket_sum %></td>
         <td><%= link_to 'Show', travel_ticket %></td>
         <td><%= link_to 'Edit', edit_travel_ticket_path(travel_ticket) %></td>
         <td><%= link_to 'Destroy', travel_ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
