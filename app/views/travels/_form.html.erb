@@ -40,24 +40,25 @@
     <%= f.label :players %><br>
     <%= f.select :players, @players.map {|p| [ p.name+" "+p.surname, p.id ] },
                                            { :prompt => "Please select players" },
-                                           { :multiple => true, :size => 5 } %>
+                                           { :multiple => true, :size => 5, include_blank: 'None' } %>
   </div>
 
    <%= f.fields_for :travel_tickets do |p| %>
      <div class="field">
        <%= p.label :ticket_name %><br>
-       <%= p.text_field :ticket_name, name: 'travel_tickets[ticket_name]' %>
+       <%= p.text_field :name %>
      </div>
      <div class="field">
        <%= p.label :ticket_player %><br>
-       <%= p.number_field :ticket_player, name: 'travel_tickets[ticket_player]' %>
+       <%= p.select :player_id, @players.map {|player| [ player.name+" "+player.surname, player.id ] },
+                                             { :prompt => "Please select player" },
+                                             { :multiple => false, :size => 1 } %>
      </div>
      <div class="field">
        <%= p.label :ticket_img %><br>
-       <%= p.file_field :ticket_img, :multiple => true, name: 'travel_tickets[ticket_img][]' %>
+       <%= p.file_field :ticket_img, :multiple => true %>
      </div>
    <% end %>
-
 
    <% if params[:controller] == "travel" && params[:action] == "edit" %>
      <% @travel.travel_tickets.each do |p| %>

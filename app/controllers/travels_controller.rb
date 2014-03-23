@@ -31,9 +31,9 @@ class TravelsController < ApplicationController
   def create
     @travel = Travel.new(travel_params)
     if @travel.save
-      unless params["travel_tickets"].nil? or params["travel_tickets"]["ticket_img"].nil?
-        params["travel_tickets"]["ticket_img"].each do |a|
-          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel_tickets]['ticket_name'][0].to_s, :player_id => params[:travel_tickets]['ticket_player'][0].to_i)
+      unless params[:travel][:travel_tickets].nil? or params["travel_tickets"][:ticket_img].nil?
+        params[:travel][:travel_tickets][:ticket_img].each do |a|
+          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel][:travel_tickets][:name], :player_id => params[:travel][:travel_tickets][:player_id])
         end
       end
       redirect_to @travel, notice: 'Travel was successfully created.'
@@ -44,9 +44,16 @@ class TravelsController < ApplicationController
   # PATCH/PUT /travels/1
   def update
     if @travel.update(travel_params)
-      unless params["travel_tickets"].nil? or params["travel_tickets"] ["ticket_img"].nil?
-        params["travel_tickets"]["ticket_img"].each do |a|
-          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel_tickets]['ticket_name'][0].to_s, :player_id => params[:travel_tickets]['ticket_player'][0].to_i)
+      unless params[:travel][:travel_tickets].nil? or params[:travel][:travel_tickets][:ticket_img].nil?
+        params[:travel][:travel_tickets][:ticket_img].each do |a|
+          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => a, :travel_id => @travel.id, :name => params[:travel][:travel_tickets][:name], :player_id => params[:travel][:travel_tickets][:player_id])
+        end
+      end
+
+      unless params[:travel]["players"].nil?
+        params[:travel]["players"].map do |d|
+          p = Player.find_by_id(d)
+          @travel.players << p if not p.nil?
         end
       end
       redirect_to @travel, notice: 'Travel was successfully updated.'
@@ -71,6 +78,6 @@ class TravelsController < ApplicationController
     def travel_params
       params.require(:travel).permit(:destination, :description, :cars_count, :travel_costs,
                                      :travel_distance, :travel_date,
-                                     travel_ticket_attributes: [:ticket_img, :travel_id, :ticket_name, :ticket_player])
+                                     :travel_ticket_attributes => [:ticket_img, :player_id, :name])
     end
 end
