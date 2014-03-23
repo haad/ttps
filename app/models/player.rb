@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
-  has_and_belongs_to_many :travels
+  has_many :travels, through: :players_travels
+  has_many :players_travels
   has_many :travel_tickets
   validates_uniqueness_of :name
   validates_uniqueness_of :email

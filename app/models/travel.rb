@@ -1,5 +1,6 @@
 class Travel < ActiveRecord::Base
-  has_and_belongs_to_many :players
+  has_many :players, through: :players_travels
+  has_many :players_travels
   has_many :travel_tickets
   validates_presence_of :destination
 

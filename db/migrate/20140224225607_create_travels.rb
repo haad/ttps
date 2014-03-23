@@ -3,7 +3,6 @@ class CreateTravels < ActiveRecord::Migration
     create_table :travels do |t|
       t.string :destination
       t.text :description
-      t.integer :players_count
       t.integer :cars_count
       t.integer :travel_costs
       t.integer :travel_distance
