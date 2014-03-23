@@ -28,16 +28,16 @@ class TravelsControllerTest < ActionController::TestCase
     assert_redirected_to travel_path(assigns(:travel))
   end
 
-  test "should create travel with travelticket" do
-    travel2 = travels(:two)
-    assert_difference('TravelTicket.count') do
-      post :create, travel: { description: travel2.description, destination: travel2.destination, travel_costs: travel2.travel_costs, travel_date: travel2.travel_date, travel_distance: travel2.travel_distance,
-          players: [ @player.id ],
-          travel_tickets: {ticket_img: Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")), name: @travelticket.name, player_id: @player.id, ticket_sum: 10 }}
-    end
-
-    assert_redirected_to travel_path(assigns(:travel))
-  end
+#  test "should create travel with travelticket" do
+#    travel2 = travels(:two)
+#    assert_difference('TravelTicket.count') do
+#      post :create, travel: { description: travel2.description, destination: travel2.destination, travel_costs: travel2.travel_costs, travel_date: travel2.travel_date, travel_distance: travel2.travel_distance,
+#          players: [ @player.id ],
+#          travel_tickets: {ticket_img: Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")), name: @travelticket.name, player_id: @player.id, ticket_sum: 10 }}
+#    end
+#
+#    assert_redirected_to travel_path(assigns(:travel))
+#  end
 
   test "should show travel" do
     get :show, id: @travel

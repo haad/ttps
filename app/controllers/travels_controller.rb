@@ -9,8 +9,11 @@ class TravelsController < ApplicationController
 
   # GET /travels/1
   def show
-#    require 'pry'
-#    binding.pry
+
+    if @travel.cars_count != @travel.travel_tickets.count
+      flash.now[:alert] = "You don't have enough Travel tickets assigned to this travel you need #{@travel.cars_count - @travel.travel_tickets.count} more."
+    end
+
     @travel_tickets=@travel.travel_tickets.to_a
   end
 
@@ -31,13 +34,12 @@ class TravelsController < ApplicationController
   def create
     @travel = Travel.new(travel_params)
     if @travel.save
-      unless params[:travel][:travel_tickets].nil? or params[:travel][:travel_tickets][:ticket_img].nil?
-          @travel_ticket = @travel.travel_tickets.create!(
-            :ticket_img => params[:travel][:travel_tickets][:ticket_img],
-            :travel_id => @travel.id,
-            :name => params[:travel][:travel_tickets][:name],
-            :player_id => params[:travel][:travel_tickets][:player_id],
-            :ticket_sum => params[:travel][:travel_tickets][:ticket_sum])
+      unless params[:travel]["players"].nil?
+        @travel.players = []
+        params[:travel]["players"].map do |d|
+          p = Player.find_by_id(d)
+          @travel.players << p unless p.nil?
+        end
       end
       redirect_to @travel, notice: 'Travel was successfully created.'
     else
@@ -47,18 +49,16 @@ class TravelsController < ApplicationController
   # PATCH/PUT /travels/1
   def update
     if @travel.update(travel_params)
-      unless params[:travel][:travel_tickets].nil? or params[:travel][:travel_tickets][:ticket_img].nil?
-          @travel_ticket = @travel.travel_tickets.create!(:ticket_img => params[:travel][:travel_tickets][:ticket_img],
-            :travel_id => @travel.id,
-            :name => params[:travel][:travel_tickets][:name],
-            :player_id => params[:travel][:travel_tickets][:player_id],
-            :ticket_sum => params[:travel][:travel_tickets][:ticket_sum])
-      end
-
       unless params[:travel]["players"].nil?
+        @travel.players = []
         params[:travel]["players"].map do |d|
           p = Player.find_by_id(d)
-          @travel.players << p if not p.nil?
+          @travel.players << p unless p.nil?
+        end
+        @travel.travel_tickets.each do |ticket|
+          unless @travel.players.map(&:id).include?(ticket.player.id)
+            @travel.players << ticket.player
+          end
         end
       end
       redirect_to @travel, notice: 'Travel was successfully updated.'

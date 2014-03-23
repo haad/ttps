@@ -9,7 +9,7 @@ one:
 
 two:
   name: TravelTicket2
-  ticket_img: <%= Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")) %>
+  ticket_img: <%= Rack::Test::UploadedFile.new(Rails.root.join("test/files/ytest.png")) %>
   ticket_sum: 10
   travel: one
   player: one

@@ -5,6 +5,7 @@ class TravelTicketsControllerTest < ActionController::TestCase
     @travel_ticket = travel_tickets(:one)
     @user = users(:one)
     @player = players(:one)
+    @travel = travels(:one)
     login_user
   end
 
@@ -21,7 +22,7 @@ class TravelTicketsControllerTest < ActionController::TestCase
 
   test "should create travel_ticket" do
     assert_difference('TravelTicket.count') do
-      post :create, travel_ticket: { player_id: @player.id, ticket_img: Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")), travel_id: 1, name: TravelTicketTest, ticket_sum: 10}
+      post :create, travel_ticket: { player_id: @player, ticket_img: Rack::Test::UploadedFile.new(Rails.root.join("test/files/test.png")), travel_id: @travel, name: TravelTicketTest, ticket_sum: 10}
     end
 
     assert_redirected_to travel_ticket_path(assigns(:travel_ticket))

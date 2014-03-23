@@ -27,7 +27,13 @@ class TravelTicketsController < ApplicationController
   # POST /travel_tickets
   def create
     @travel_ticket = TravelTicket.new(travel_ticket_params)
+    @players = Player.all.to_a
+    @travels = Travel.all.to_a
+
     if @travel_ticket.save
+      unless @travel_ticket.travel.players.include?(@travel_ticket.player)
+        @travel_ticket.travel.players << @travel_ticket.player
+      end
       redirect_to @travel_ticket, notice: 'Travel ticket was successfully created.'
     else
       render action: 'new'
