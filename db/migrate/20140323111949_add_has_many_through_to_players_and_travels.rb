@@ -5,5 +5,8 @@ class AddHasManyThroughToPlayersAndTravels < ActiveRecord::Migration
         t.belongs_to :travel
         t.boolean :driver
       end
+
+    add_index :players_travels, :player_id
+    add_index :players_travels, :travel_id
   end
 end

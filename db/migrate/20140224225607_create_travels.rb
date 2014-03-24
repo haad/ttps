@@ -12,3 +12,4 @@ class CreateTravels < ActiveRecord::Migration
     end
   end
 end
+

@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20140324085350) do
     t.boolean "driver"
   end
 
+  add_index "players_travels", ["player_id"], name: "index_players_travels_on_player_id"
+  add_index "players_travels", ["travel_id"], name: "index_players_travels_on_travel_id"
+
   create_table "travel_tickets", force: true do |t|
     t.string   "ticket_img"
     t.string   "name"
@@ -37,6 +40,9 @@ ActiveRecord::Schema.define(version: 20140324085350) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "travel_tickets", ["player_id"], name: "index_travel_tickets_on_player_id"
+  add_index "travel_tickets", ["travel_id"], name: "index_travel_tickets_on_travel_id"
 
   create_table "travels", force: true do |t|
     t.string   "destination"

@@ -9,5 +9,8 @@ class CreateTravelTickets < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :travel_tickets, :player_id
+    add_index :travel_tickets, :travel_id
   end
 end
