@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Ttps::Application.config.secret_key_base = 'd97f59ecf67ea44092c043b6cca109b01652aa7cf4133a8b870f58f3482e786d13bfb2b0269cfb1b1be54d0f77e534d5d345825bb0a90a549dcf550478b12755'
+Ttps::Application.config.secret_key_base = ENV['SESSION_SECRET'] 

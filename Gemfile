@@ -28,6 +28,9 @@ gem 'carrierwave'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# Use it to load data from config file to ENV
+gem 'figaro'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -38,6 +41,8 @@ group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3-ruby'
   gem 'shotgun'
+  gem 'brakeman'
+  gem 'rails_best_practices'
 end
 
 group :test do
