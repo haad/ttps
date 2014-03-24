@@ -81,8 +81,7 @@ class TravelsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def travel_params
-      params.require(:travel).permit(:destination, :description, :cars_count, :travel_costs,
-                                     :travel_distance, :travel_date,
+      params.require(:travel).permit(:destination, :description, :cars_count, :travel_distance, :travel_date,
                                      :travel_ticket_attributes => [:ticket_img, :player_id, :name, :ticket_sum])
     end
 end

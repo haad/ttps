@@ -4,7 +4,6 @@ one:
   destination: Budapest
   description: MyText
   cars_count: 2
-  travel_costs: 1
   travel_distance: 1
   travel_date: 2014-02-24
 
@@ -12,6 +11,5 @@ two:
   destination: Praha1
   description: MyText
   cars_count: 2
-  travel_costs: 1
   travel_distance: 1
   travel_date: 2014-02-24
