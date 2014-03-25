@@ -43,7 +43,7 @@ class TravelsController < ApplicationController
       end
       redirect_to @travel, notice: 'Travel was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
   end
   # PATCH/PUT /travels/1
@@ -63,7 +63,7 @@ class TravelsController < ApplicationController
       end
       redirect_to @travel, notice: 'Travel was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 

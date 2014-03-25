@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
     if @player.save
       redirect_to @player, notice: 'Player was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -36,7 +36,7 @@ class PlayersController < ApplicationController
     if @player.update(player_params)
       redirect_to @player, notice: 'Player was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 

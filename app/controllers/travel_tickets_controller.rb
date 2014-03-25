@@ -36,7 +36,7 @@ class TravelTicketsController < ApplicationController
       end
       redirect_to @travel_ticket, notice: 'Travel ticket was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -48,7 +48,7 @@ class TravelTicketsController < ApplicationController
     if @travel_ticket.update(travel_ticket_params)
       redirect_to @travel_ticket, notice: 'Travel ticket was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 
