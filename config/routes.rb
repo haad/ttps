@@ -4,7 +4,7 @@ Ttps::Application.routes.draw do
   get "user_sessions/destroy"
 
   root :to => 'travels#index'
-  resources :user_sessions
+  resources :user_sessions, only: [:new, :create, :destroy]
   resources :users
 
   get 'login' => 'user_sessions#new', :as => :login

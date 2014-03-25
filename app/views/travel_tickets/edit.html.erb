@@ -1,6 +1,6 @@
 <h1>Editing travel_ticket</h1>
 
-<%= render 'form' %>
+<%= render 'form', :locals => { :travel_ticket => @travel_ticket, :players => @players, :travels => @travels } %>
 
 <%= link_to 'Show', @travel_ticket %> |
 <%= link_to 'Back', travel_tickets_path %>

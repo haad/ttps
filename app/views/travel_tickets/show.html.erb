@@ -24,7 +24,7 @@
 <p>
   <strong>Travel Ticket Image:</strong>
 </p>
-<%= image_tag(@travel_ticket.ticket_img_url, :width => 150) if @travel_ticket.ticket_img.present? %>
+<%= image_tag(@travel_ticket.ticket_img_url, :width => 150) if @travel_ticket.ticket_img? %>
 
 <br />
 <%= link_to 'Edit', edit_travel_ticket_path(@travel_ticket) %> |

@@ -1,10 +1,10 @@
-<%= form_for(@travel) do |f| %>
-  <% if @travel.errors.any? %>
+<%= form_for(travel) do |f| %>
+  <% if travel.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
+      <h2><%= pluralize(travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
 
       <ul>
-      <% @travel.errors.full_messages.each do |msg| %>
+      <% travel.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -34,7 +34,7 @@
 
   <div class="field">
     <%= f.label :players %><br>
-    <%= f.select :players, @players.map {|p| [ p.name+" "+p.surname, p.id ] },
+    <%= f.select :players, players.map {|p| [ p.name+" "+p.surname, p.id ] },
                                            { :prompt => "Please select players" },
                                            { :multiple => true, :size => 5, include_blank: 'None' } %>
   </div>

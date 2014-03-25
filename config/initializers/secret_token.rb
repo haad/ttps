@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Ttps::Application.config.secret_key_base = ENV['SESSION_SECRET'] 
+Ttps::Application.config.secret_key_base = ENV['SESSION_SECRET']

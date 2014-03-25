@@ -1,10 +1,10 @@
-<%= form_for(@travel_ticket) do |f| %>
-  <% if @travel_ticket.errors.any? %>
+<%= form_for(travel_ticket) do |f| %>
+  <% if travel_ticket.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@travel_ticket.errors.count, "error") %> prohibited this travel_ticket from being saved:</h2>
+      <h2><%= pluralize(travel_ticket.errors.count, "error") %> prohibited this travel_ticket from being saved:</h2>
 
       <ul>
-      <% @travel_ticket.errors.full_messages.each do |msg| %>
+      <% travel_ticket.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -25,13 +25,13 @@
   </div>
   <div class="field">
     <%= f.label :ticket_travel %><br>
-    <%= f.select :travel_id, @travels.map {|travel| [ travel.destination+" "+travel.travel_date.inspect, travel.id ] },
+    <%= f.select :travel_id, travels.map {|travel| [ travel.destination+" "+travel.travel_date.inspect, travel.id ] },
                                           { :prompt => "Please select travel" },
                                           { :multiple => false, :size => 1 } %>
   </div>
   <div class="field">
     <%= f.label :ticket_player %><br>
-    <%= f.select :player_id, @players.map {|player| [ player.name+" "+player.surname, player.id ] },
+    <%= f.select :player_id, players.map {|player| [ player.name+" "+player.surname, player.id ] },
                                           { :prompt => "Please select player" },
                                           { :multiple => false, :size => 1 } %>
   </div>
@@ -40,6 +40,6 @@
   </div>
 
   <% if params[:controller] == "travel_tickets" && params[:action] == "edit" %>
-       <%= image_tag @travel_ticket.ticket_img, :size => "150x150" %>
+       <%= image_tag travel_ticket.ticket_img, :size => "150x150" %>
   <% end %>
 <% end %>
