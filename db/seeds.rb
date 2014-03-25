@@ -14,4 +14,4 @@ Player.create!(:name => "George", :surname => "Desko", :email => "Gd@syr.edu", :
 Player.create!(:name => "Martin", :surname => "Desko", :email => "Md@syr.edu", :phone => "123456789")
 Player.create!(:name => "Jaroslav", :surname => "Desko", :email => "jrd@syr.edu", :phone => "1234567890")
 
-Travel.create(:destination => "TestDest", :description => "TestDescription", :cars_count => 2, :travel_distance => 100, :travel_costs => 100)
+Travel.create(:destination => "TestDest", :description => "TestDescription", :cars_count => 2, :travel_distance => 100)
