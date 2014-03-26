@@ -7,6 +7,7 @@
       <th>Surname</th>
       <th>Email</th>
       <th>Phone</th>
+      <th>Bank Account</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,6 +21,7 @@
         <td><%= player.surname %></td>
         <td><%= player.email %></td>
         <td><%= player.phone %></td>
+        <td><%= player.bank_account %></td>
         <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
