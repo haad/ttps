@@ -8,17 +8,31 @@
   </head>
   <body>
 
-  <div id="nav">
-    <% if current_user %>
-      <%= link_to "Travels", :travels %> |
-      <%= link_to "Travel Tickets", :travel_tickets %> |
-      <%= link_to "Players", :players %> |
-      <%= link_to "Payments", :payments %> |
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
-      <%= link_to "Logout", :logout, method: :post %>
-    <% else %>
-      <%= link_to "Login", :login %>
-    <% end %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Ttps</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+          <% if current_user %>
+            <li><%= link_to "Travels", :travels %></li>
+            <li><%= link_to "Travel Tickets", :travel_tickets %></li>
+            <li><%= link_to "Players", :players %></li>
+            <li><%= link_to "Payments", :payments %></li>
+            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+            <li><%= link_to "Logout", :logout, method: :post %></li>
+          <% else %>
+            <li><%= link_to "Login", :login %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <p id="notice"><%= flash[:notice] %></p>

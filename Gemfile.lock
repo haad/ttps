@@ -58,6 +58,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     colored (1.2)
+    commonjs (0.2.7)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -78,6 +79,11 @@ GEM
     json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
+    less (2.5.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.5.0)
+      actionpack (>= 3.1)
+      less (~> 2.5.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -222,6 +228,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   figaro
   jquery-rails
+  less-rails
   pg
   pry
   rails (= 4.0.3)
