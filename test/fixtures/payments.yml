@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payment_amount: 1
+  name: MyString
+  player_id: 1
+  travel_id: 1
+
+two:
+  payment_amount: 1
+  name: MyString
+  player_id: 1
+  travel_id: 1

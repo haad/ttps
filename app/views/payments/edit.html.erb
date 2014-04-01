@@ -1,0 +1,6 @@
+<h1>Editing payment</h1>
+
+<%= render :partial => 'form', :locals => { :payment => @payment, :players => @players, :travels => @travels } %>
+
+<%= link_to 'Show', @payment %> |
+<%= link_to 'Back', payments_path %>

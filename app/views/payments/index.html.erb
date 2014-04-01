@@ -1,0 +1,33 @@
+<h1>Listing payments</h1>
+
+<table border="0" cellpadding="10" cellspacing="2" style="margin:1px">
+  <thead>
+    <tr>
+      <th>Payment amount</th>
+      <th>Name</th>
+      <th>Player</th>
+      <th>Travel</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.payment_amount %></td>
+        <td><%= payment.name %></td>
+        <td><%= "#{payment.player.name} #{payment.player.surname}" %></td>
+        <td><%= payment.travel.destination %></td>
+        <td><%= link_to 'Show', payment %></td>
+        <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment', new_payment_path %>

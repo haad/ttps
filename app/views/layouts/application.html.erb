@@ -13,10 +13,10 @@
       <%= link_to "Travels", :travels %> |
       <%= link_to "Travel Tickets", :travel_tickets %> |
       <%= link_to "Players", :players %> |
+      <%= link_to "Payments", :payments %> |
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
       <%= link_to "Logout", :logout, method: :post %>
     <% else %>
-      <%= link_to "Register", new_user_path %> |
       <%= link_to "Login", :login %>
     <% end %>
   </div>
