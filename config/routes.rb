@@ -15,7 +15,10 @@ Ttps::Application.routes.draw do
   resources :users
   resources :travel_tickets
   resources :players
+  get 'travels/update_travels', as: 'update_travels'
+
   resources :travels
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

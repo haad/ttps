@@ -13,4 +13,9 @@ class Player < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :phone
   validates_presence_of :bank_account
+  validates_presence_of :surname
+
+  def name_with_surname
+    "#{name} #{surname}"
+  end
 end

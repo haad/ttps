@@ -73,6 +73,20 @@ class TravelsController < ApplicationController
     redirect_to travels_url, notice: 'Travel was successfully destroyed.'
   end
 
+  # GET /update_travels
+  def update_travels
+    @travels = []
+    if params[:player_id].present?
+      Travel.all.map do |travel|
+        @travels <<  travel if travel.players.include?(Player.find_by_id(params[:player_id]))
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_travel

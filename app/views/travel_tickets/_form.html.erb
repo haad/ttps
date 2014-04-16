@@ -24,16 +24,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :ticket_travel %><br>
-    <%= f.select :travel_id, travels.map {|travel| [ travel.destination+" "+travel.travel_date.inspect, travel.id ] },
-                                          { :prompt => "Please select travel" },
-                                          { :multiple => false, :size => 1 } %>
+  <%= f.label :ticket_player %><br>
+  <%= f.select :player_id, options_for_select(@players.collect { |player|
+    [player.name+" "+player.surname, player.id] }, 1), {}, { id: 'players_select' } %>
+
   </div>
   <div class="field">
-    <%= f.label :ticket_player %><br>
-    <%= f.select :player_id, players.map {|player| [ player.name+" "+player.surname, player.id ] },
-                                          { :prompt => "Please select player" },
-                                          { :multiple => false, :size => 1 } %>
+    <%= f.label :ticket_travel %><br>
+    <%= f.select :travel_id, options_for_select(@travels.collect { |travel|
+    [travel.destination+" "+travel.travel_date.inspect, travel.id] }, 0), {}, { id: 'travels_select' } %>
+<br/>
   </div>
   <div class="actions">
     <%= f.submit %>

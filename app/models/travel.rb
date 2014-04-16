@@ -24,5 +24,9 @@ class Travel < ActiveRecord::Base
     end
     costs
   end
+
+  def dest_with_date
+    "#{destination} #{travel_date.inspect}"
+  end
   #accepts_nested_attributes_for :players, :travel_tickets
 end

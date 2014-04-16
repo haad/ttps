@@ -20,6 +20,8 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-bootstrap-rails'
+gem 'jquery-turbolinks'
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
