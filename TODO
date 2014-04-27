@@ -1,0 +1,9 @@
+# TODO
+
+
+* Payments fetch travels with ajax after we have selected a player.
+* Suggest a value for payment when we select a travel
+* For a travel show list of players who already paid and those who haven't
+* Select a travel in travelticket with player selected will always choose first
+* Make carrierwave working on heroku
+
